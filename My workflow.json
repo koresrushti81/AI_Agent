@@ -1,0 +1,194 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.5,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1a83d552-6a02-4011-9ef7-aed72d862062",
+      "name": "When chat message received",
+      "webhookId": "61333484-3f2e-44d2-beb3-da9d017cdad3"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "baf0bb61-bc18-4e9e-8beb-df6aecb96612",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1.2,
+      "position": [
+        96,
+        208
+      ],
+      "id": "6a3f9dd4-5f57-4820-bfb5-bb8f667e175a",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "XrdFeX27fEV5L63L",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        240,
+        208
+      ],
+      "id": "7704abe6-e159-4673-ba2f-f18e37651324",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.toolWikipedia",
+      "typeVersion": 1,
+      "position": [
+        336,
+        224
+      ],
+      "id": "b41b9d32-7cf8-456c-9f8b-e6f650b8fddb",
+      "name": "Wikipedia"
+    },
+    {
+      "parameters": {
+        "additionalFields": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-serpapi.serpApiTool",
+      "typeVersion": 1,
+      "position": [
+        432,
+        208
+      ],
+      "id": "8211b478-da2b-477a-94ce-6eb3a7433785",
+      "name": "Google search in SerpApi",
+      "credentials": {
+        "serpApi": {
+          "id": "xTMDjtQa7Ys1eHKH",
+          "name": "SerpApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "cityName": "Maharashtra Nagar, IN"
+      },
+      "type": "n8n-nodes-base.openWeatherMapTool",
+      "typeVersion": 1,
+      "position": [
+        480,
+        304
+      ],
+      "id": "5d01105e-41ca-4f71-a4e6-afab318e8fbe",
+      "name": "OpenWeatherMap",
+      "credentials": {
+        "openWeatherMapApi": {
+          "id": "5Vl3h5rX44Z2Mnvy",
+          "name": "OpenWeatherMap account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wikipedia": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google search in SerpApi": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenWeatherMap": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "39ff0237-8e25-414d-9c56-b574496a2c77",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ae15e2004697d21d6ad9c31e48a51bafef988bbdc5be66610f6b2b8a20f06ff2"
+  },
+  "nodeGroups": [],
+  "id": "meGlaLd1KG87jpXz",
+  "tags": []
+}
